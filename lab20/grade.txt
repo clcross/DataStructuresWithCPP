@@ -1,0 +1,14 @@
+******************* push-pop Test *********************
+g++ -o ht-test -g -I src/ --std=c++14 src/priorityqueue.cpp src/main.cpp
+Failures = 
+MAKE_ERROR = 
++ 50.000 pts of 50.000
+Total grade so far: 50.000
+******************* time test *********************
+g++ -o ht-test -g -I src/ --std=c++14 src/priorityqueue.cpp src/main.cpp
+Failures = 
+MAKE_ERROR = 
++ 50.000 pts of 50.000
+Total grade so far: 100.000
+Auto-grader grade: 100.000
+*****************Finished lab20****************

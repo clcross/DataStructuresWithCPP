@@ -1,0 +1,20 @@
+******************* lf Test *********************
+g++ -o ht-test -g -I src/ --std=c++14 src/hashtable.cpp src/main.cpp
+Failures = 
+MAKE_ERROR = 
++ 25.000 pts of 25.000
+Total grade so far: 25.000
+******************* insert Test *********************
+g++ -o ht-test -g -I src/ --std=c++14 src/hashtable.cpp src/main.cpp
+Failures = 
+MAKE_ERROR = 
++ 35.000 pts of 35.000
+Total grade so far: 60.000
+******************* remove test *********************
+g++ -o ht-test -g -I src/ --std=c++14 src/hashtable.cpp src/main.cpp
+Failures = 
+MAKE_ERROR = 
++ 40.000 pts of 40.000
+Total grade so far: 100.000
+Auto-grader grade: 100.000
+*****************Finished lab19****************

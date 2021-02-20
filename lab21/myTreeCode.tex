@@ -1,0 +1,188 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage[all]{xy}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\begin{document}
+
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+
+M = 5 \\
+Insert 3\\
+$$\xymatrix @C=0pt {
+ & &  &  & & 3 & & &  &  &  \\
+}$$
+
+Insert 21\\
+$$\xymatrix @C=0pt {
+ & &  &  & & 3 & 21 &  &  &  \\
+}$$
+
+Insert 9\\
+$$\xymatrix @C=0pt {
+ & &  &  & & 3 & 9 & 21 &  &  &  \\
+}$$
+
+Insert 1\\
+$$\xymatrix @C=0pt {
+ & &  &  & 1 & 3 & 9 & 21 &  &  &  \\
+}$$
+
+Insert 13\\
+$$\xymatrix @C=0pt {
+ & &  &  & 1 & 3 & 9 & 13 & 21 &  &  \\
+}$$
+
+This violates condition 5, so we promote the 9 \\
+$$\xymatrix @C=0pt {
+& &  &  &    &   & \ar[dll] 9 \ar[dr] & &   &  &  \\
+ & &  &  & 1 & 3 &  & 13 & 21 &  &  \\
+}$$
+
+Insert 2\\
+$$\xymatrix @C=0pt {
+& &  &  &    & \ar[dlll] 9 \ar[dr] & &   &  &  \\
+ &  & 1 & 2 & 3 &  & 13 & 21 &  &  \\
+}$$
+
+Insert 7\\
+$$\xymatrix @C=0pt {
+& &  &  &    &   & \ar[dllll] 9 \ar[dr] & &   &  &  \\
+ &  & 1 & 2 & 3 & 7 &  & 13 & 21 &  &  \\
+}$$
+
+Insert 10\\
+$$\xymatrix @C=0pt {
+& &  &  &    &   & \ar[dllll] 9 \ar[dr] & &   &  &  \\
+ &  & 1 & 2 & 3 & 7 &  & 10 & 13 & 21 &  &  \\
+}$$
+
+Insert 12\\
+$$\xymatrix @C=0pt {
+& &  &  &    &   & \ar[dllll] 9 \ar[dr] & &   &  &  \\
+ &  & 1 & 2 & 3 & 7 &  & 10 & 12 & 13 & 21 &  &  \\
+}$$
+
+Insert 4\\
+$$\xymatrix @C=0pt {
+& &  &  &    &   & \ar[dllll] 9 \ar[drr] & &   &  &  \\
+ &  & 1 & 2 & 3 & 4 & 7 &  & 10 & 12 & 13 & 21 &  &  \\
+}$$
+
+This violates condition 5, so we promote 3\\
+$$\xymatrix @C=0pt {
+& &  &  &    &   & \ar[dllll] 3 & \ar[dll] 9\ar[dr] &   &  &  \\
+ &  & 1 & 2 &  & 4 & 7 &  & 10 & 12 & 13 & 21 &  &  \\
+}$$
+
+Insert 8\\
+$$\xymatrix @C=0pt {
+& &  &  &    &   & \ar[dllll] 3 & \ar[dll] 9\ar[drr] &   &  &  \\
+ &  & 1 & 2 &  & 4 & 7 & 8 &  & 10 & 12 & 13 & 21 &  &  \\
+}$$
+
+Delete 2\\
+$$\xymatrix @C=0pt {
+& &  &  &    &   & \ar[dllll] 3 & \ar[dlll] 9\ar[dr] &   &  &  \\
+ &  & 1 &  & 4 & 7 & 8 &  & 10 & 12 & 13 & 21 &  &  \\
+}$$
+
+This violates condition 3, so we rotate the 3 and 4\\
+$$\xymatrix @C=0pt {
+& &  &  &    &   & \ar[dllll] 4 & \ar[dll] 9\ar[dr] &   &  &  \\
+ &  & 1 & 3 &  & 7 & 8 &  & 10 & 12 & 13 & 21 &  &  \\
+}$$
+
+Delete 21\\
+$$\xymatrix @C=0pt {
+& &  &  &    &   & \ar[dllll] 4 & \ar[dll] 9\ar[dr] &   &  &  \\
+ &  & 1 & 3 &  & 7 & 8 &  & 10 & 12 & 13 &  &  \\
+}$$
+
+Delete 10\\
+$$\xymatrix @C=0pt {
+& &  &  &    &   & \ar[dllll] 4 & \ar[dll] 9\ar[dr] &   &  &  \\
+ &  & 1 & 3 &  & 7 & 8 &  & 12 & 13 &  &  \\
+}$$
+
+Delete 3\\
+$$\xymatrix @C=0pt {
+& &  &  &    &   & \ar[dllll] 4 & \ar[dlll] 9\ar[d] &   &  &  \\
+ &  & 1 &  & 7 & 8 &  & 12 & 13 &  &  \\
+}$$
+
+This violates condition 3, so we demote 4\\
+$$\xymatrix @C=0pt {
+& &  &  &    &   & \ar[dllll] 9 \ar[dr] & &   &  &  \\
+ &  & 1 & 4 & 7 & 8 &  & 12 & 13 &  &  \\
+}$$
+
+Delete 4\\
+$$\xymatrix @C=0pt {
+& &  & &  & \ar[dlll] 9 \ar[dr] & &   &  &  \\
+  &  & 1 & 7 & 8 &  & 12 & 13 &  &  \\
+}$$
+
+Delete 8\\
+$$\xymatrix @C=0pt {
+& &  &   & \ar[dll] 9 \ar[dr] & &   &  &  \\
+ &  & 1 & 7 &  & 12 & 13 &  &  \\
+}$$
+
+Insert 44\\
+$$\xymatrix @C=0pt {
+& &  &   & \ar[dll] 9 \ar[dr] & &   &  &  \\
+ &  & 1 & 7 &  & 12 & 13 & 44 &  &  \\
+}$$
+
+Insert 45\\
+$$\xymatrix @C=0pt {
+& &  &   & \ar[dll] 9 \ar[dr] & &   &  &  \\
+ &  & 1 & 7 &  & 12 & 13 & 44 & 45 &  &  \\
+}$$
+
+Insert 47\\
+$$\xymatrix @C=0pt {
+& &  &   & \ar[dll] 9 \ar[dr] & &   &  &  \\
+ &  & 1 & 7 &  & 12 & 13 & 44 & 45 & 47 &  &  \\
+}$$
+
+This violates condition 5, so we promote the 44\\
+$$\xymatrix @C=0pt {
+& &  &   &   & \ar[dlll] 9\ar[d]&44\ar[drr] &   &  &  \\
+ &  & 1 & 7 &  & 12 & 13 &  & 45 & 47 &  &  \\
+}$$
+
+Insert 48\\
+$$\xymatrix @C=0pt {
+& &  &   &   & \ar[dlll] 9\ar[d]&44\ar[drr] &   &  &  \\
+ &  & 1 & 7 &  & 12 & 13 &  & 45 & 47 & 48 &  &  \\
+}$$
+
+Insert 49\\
+$$\xymatrix @C=0pt {
+& &  &   &   & \ar[dlll] 9\ar[d]&44\ar[drr] &   &  &  \\
+ &  & 1 & 7 &  & 12 & 13 &  & 45 & 47 & 48 & 49 &  &  \\
+}$$
+
+\end{document}

@@ -1,0 +1,14 @@
+1) What is the performance difference for append between an Array, SLList, and DLList?
+	It depends but mainly append is faster for linked lists than it is for an array. a SLList is faster than DLList because you dont have to set a prev pointer. 
+
+2) What is the performance difference for insert between an Array, SLList, and DLList?
+	It depends but usually insert is faster for DLList if the index is toward the end of the list but it is similar for both lists if it is at the front. they are faster than arrays. 
+
+4) What is the performance difference for remove between an Array, SLList, and DLList? 
+	It depends but majority of the time remove is faster for SLList that DLList and array because there is less parameters to set than in a DLList and because you dont have to cycle over every single element twice like in an array.
+
+5) What is the performance difference for search between an Array, SLList, and DLList?
+	It depends but most of the time search is faster for a DLList because you can start looking at both ends of the list while you can only search from the front on SLList and arrays.	
+
+
+DPW: Why no Big-O!?

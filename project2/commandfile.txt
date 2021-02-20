@@ -1,0 +1,1 @@
+valgrind ./html-test pages/index.html pages/pokemon.html pages/howLow.html pages/new.html pages/theend.html pages/notbalanced.html pages/fileNotFound.html

@@ -1,0 +1,77 @@
+lab 01
+Enter your chosen Unix environment.  For the word 'command' assume it is a one line command unless explicitly stated otherwise.  
+
+*******************************************************************************
+*********State what command(s) you used to accomplish each task.***************
+*******************************************************************************
+
+1. What unix-based OS you are using (Ubuntu, Fedora, OSX, etc...)?
+Camerons-MacBook-Pro:~ cameroncross$ uname -a
+Darwin Camerons-MacBook-Pro.local 18.7.0 Darwin Kernel Version 18.7.0: Thu Jun 20 18:42:21 PDT 2019; root:xnu-4903.270.47~4/RELEASE_X86_64 x86_64
+
+2. What are command line options (also called parameters)?
+They are commands or phrases that are used to interact with a computer using terminal.
+
+3. What are ALL the files in your home directory (the directory you start in) whose name contains the word 'bash'?  What command did you use?
+Camerons-MacBook-Pro:~ cameroncross$ ls -a
+.bash_history
+.bash_sessions
+
+4. Create a new directory in your home and call it lab01.
+Camerons-MacBook-Pro:~ cameroncross$ mkdir lab01
+
+5. Create a directory inside of lab01 named lab01_sub while still in the home directory.
+Camerons-MacBook-Pro:~ cameroncross$ mkdir lab01/lab01_sub
+
+6. Create a file inside lab01_sub named readme-please.txt, the file can be empty
+Camerons-MacBook-Pro:lab01_sub cameroncross$ touch readme-please.txt
+
+7. What is the full (absolute) path of lab01_sub? What command did you use?
+Camerons-MacBook-Pro:lab01_sub cameroncross$ pwd
+/Users/cameroncross/lab01/lab01_sub
+
+8. If your present working directory is lab01, name three 1 line commands that will return you to your home directory?
+Camerons-MacBook-Pro:lab01 cameroncross$ cd ..
+Camerons-MacBook-Pro:lab01 cameroncross$ cd ~
+Camerons-MacBook-Pro:lab01 cameroncross$ cd
+
+9. Copy the readme-please.txt (that is in the current working directory) file into your home directory (not the directory named home, the top level directory of your personal files)
+Camerons-MacBook-Pro:lab01_sub cameroncross$ cp readme-please.txt ~
+
+10. Rename this new file to be completely-useless.txt
+Camerons-MacBook-Pro:~ cameroncross$ mv readme-please.txt completely-useless.txt
+
+11. Explain what |, <, >, and >> do when used on the command prompt.
+| acts as a divider do that one command is ran then the other.
+< is used to send items through a network.
+> is used to input text to a file and create it if it does not exist.
+>> does a similar job to > but it does not overwite the text that is currently in the file.
+
+12. What is the difference between * and ? in filename wildcards?
+* will find any number of characters before or after the input depending where it was placed while ? only finds the place where it was put.
+
+13. What command would you type in order to determine the number of lines in somefile.txt that do NOT contain HI hi Hi or hI?  Hint, grep is your friend.
+Camerons-MacBook-Pro:~ cameroncross$ grep -vci 'hi' somefile.txt
+
+14. What 1 line command would you type to generate a file names.txt that contains a list of users currently on the system sorted lexicographically (default order of sort) (hint: who is on the system)?
+Camerons-MacBook-Pro:Users cameroncross$ sudo cut -d: -f1 /Users | sort | cat> names.txt
+
+15. What does the -r option do for the rm command?  How about -f?  Hint: use man.
+-r lets you remove a folder with files still inside it.
+-f Attempt to remove the files without prompting for confirmation, regardless of the file's permissions.  If the file does
+   not exist, do not display a diagnostic message or modify the
+
+16. Is executing the command 'rm -rf *' from your home directory a good idea?  Why/why not (what would it do)?
+because the -rf will remove folders and files without permission and the * will target all items in the directory.
+
+Turn in: Please edit this document and submit via github as a .pdf or .txt.
+Due: September 04, 2019 2359
+
+How to Turn in:  Make sure you unix-commands.txt is in your lab01 directory.  Then enter the directory and type:
+$ git pull
+$ git add unix-commands.txt
+$ git commit -m 'lab01'
+$ git push
+
+
+Note: There is no auto-grader for this assignment.

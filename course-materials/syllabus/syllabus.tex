@@ -1,0 +1,198 @@
+\documentclass[10pt]{article}
+\textwidth=7in
+\textheight=9.5in
+\topmargin=-1in
+\headheight=0in
+\headsep=.5in
+\hoffset  -.85in
+
+\pagestyle{empty}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\usepackage{hyperref}
+
+\begin{document}
+
+\begin{center}
+{\bf CSCI 315\ Sec. 01  Data Structures Analysis \ \ MW 800-0950 Lab 0950-1050,  Room: Ashby Hall 208
+}
+\end{center}
+
+\setlength{\unitlength}{1in}
+
+\begin{picture}(6,.1) 
+\put(0,0) {\line(1,0){6.25}}         
+\end{picture}
+
+\renewcommand{\arraystretch}{2}
+\setlength{\tabcolsep}{6pt} % General space between cols (6pt standard)
+\renewcommand{\arraystretch}{.5} % General space between rows (1 standard)
+
+\vskip.15in
+\noindent\textbf{Instructor:} Dr. Paul E. West, AH 206, Phone: (843)-863-7329, email: pwest@csuniv.edu
+
+\vskip.15in
+\noindent\textbf{Office Hours:} M 1100-1200, TR 0740-0920, TR 1200-1350 and by appointment.
+
+\vskip.15in
+\noindent\textbf{Email:} Due to CSU's new email policy I will only guarantee email access during my office hours.
+
+\vskip.15in
+\noindent\textbf{Textbooks:} \\
+\underline{C++ Programming: Program Design Including Data Structures} D. S. Malik. 8th Edition (whatever edition you used for CSCI 235 is also fine). You may use a different book if you like, as assignments and labs will come from class material and not the book.
+
+\vskip.15in
+\noindent\textbf{Github:} \\
+I drive most of my classes from github.  Assignments and lectures are located on Github here: \url{https://github.com/csu-cs/csci-315-fall-2019}.  If you are not able to view, please send me an email so I can grant you access.\\
+\textbf{Note:} The content for this course in on Github!
+
+\vskip.15in
+\noindent\textbf{Course Description:}
+This course is designed to teach you many of the basic data structures used in computer science. You will learn how to make them, use them, and analyze them. In addition you will see how to apply them to novel problems using careful analysis of the problem to determine which data structure is best suited. Coding will be done in C++ though the concepts are not language dependent.
+
+This course is one of the most important in the major. Projects will require a level of design that is new to your programming career and will help to prepare you for real-world jobs. The ‘toolbox’ this class will provide you will be used throughout your programming future. The course serves as a gateway to many advanced courses. CSCI 315 is a \textbf{demanding} course, expect more work than previous courses. The projects in this class are more involved, requiring a deeper understanding of Computer Science. Learning to design and manage large projects is a core concept of the degree.\\
+
+\textbf{\textit{\underline{From previous experience, those who keep up with the work do well.}}}
+
+\vskip.15in
+\noindent\textbf{Course Objectives/Learning Outcomes:}
+ABET Student Outcomes: The following student outcomes shall be supported by this coursework:
+\begin{enumerate}
+\item An ability to apply knowledge of computing and mathematics appropriate to the discipline.
+\item An ability to analyze a problem, and identify and define the computing requirements appropriate to its solution.
+\item An ability to design, implement, and evaluate a computer-based system, process, component, or program to meet desired needs.
+\item An ability to communicate effectively with a range of audiences.
+\item An ability to use current techniques, skills, and tools necessary for computing practice.
+\item An ability to apply mathematical foundations, algorithmic principles, and computer science theory in the modeling and design of computer-based systems in a way that demonstrates comprehension of the tradeoffs involved in design choices.
+\item An ability to apply design and development principles in the construction of software systems of varying complexity.
+\end{enumerate}
+
+\vskip.15in
+\noindent\textbf{Teamwork:} There is an expectation of teamwork in many of the class/lab projects. The professor will use his/her discretion as to the team membership and will direct teams to produce a single solution among the teammates. Teamwork is a highly valued skill in the workplace and society as a whole. Through these teamwork exercises the goal is to develop an understanding of what makes teams successful and to be able to function effectively as a teammate.\\
+There is no play to have a group project in CSCI 315.
+
+\vskip.15in
+\noindent\textbf{Attendance and Late Work:} I will not be enforcing an attendance policy.  Any late work will receive a 20\% penalty and I will not accept \textit{late} work after December 01, 2019 at 2359.
+
+\vskip.15in
+\noindent\textbf{Tentative Schedule}: \\ \\
+Section 1 Topics:
+*nix topics: Bash, compilation, profiling, performance analysis
+
+Section 2 Topics:
+Arrays (review), abstract data types (classes), pointers, linked lists, object-oriented programming (OOP), strings. 
+
+Section 3 Topics:
+Inheritance, Big-O, Stacks, Queues, Templates, STL, casting, Sorting (insertion, selection, mergesort, quicksort), Streams. 
+
+Section 4 Topics:
+Recursion, Binary Search Trees (BST), Maps, Heaps, Priority Queues, Heapsort, Hash tables, Operator Overloads.
+
+\vskip.15in
+\noindent\textbf{Grading}: \\ \\
+\begin{tabular}{ l l}
+Ethics Paper & 5\%\\
+Midterm & 15\% \\
+Final & 15\% \\
+Labs & 35\% \\
+Projects & 30\% \\
+\end{tabular}\\
+
+\vspace*{.15in}
+\noindent\textbf{Grading Scale:} \\ \\
+\begin{tabular}{|l|l|}
+\hline
+100 - 90 & A \\ \hline
+89 - 87 & B+ \\ \hline
+86 - 80 & B \\ \hline
+79 - 77 & C+ \\ \hline
+76 - 70 & C \\ \hline
+69 - 60 & D \\ \hline
+below 60 & F \\ \hline
+\end{tabular}
+
+
+\vskip.15in
+\noindent\textbf{Student Representatives}:
+These are students who are designated by letter to represent the University on official business, e.g., athletic, music, and similar events. If officially scheduled absences cause these students to miss tests, assignments, and/or other similar academic activities, University policy allows these to be made up without penalty. In accordance with this policy, Student Representatives may opt to either make up tests prior to departure, or supplanting missed tests with the final exam grade. Final exams must always be taken prior to departure to avoid an Incomplete for the course. Scheduled assignments remain subject to the lateness policy and must be turned in before departure to avoid lateness penalties. Student Representatives are responsible to inform the instructor of official absences and to make all appropriate arrangements.
+
+
+\vskip.15in
+\noindent\textbf{Academic Honesty}:  
+As a liberal arts university committed to the Christian faith, Charleston Southern University seeks to develop ethical men and women of disciplined, creative minds and lives that focus on leadership, service and learning. The Honor System of Charleston Southern University is designed to provide an academic community of trust in which students can enjoy the opportunity to grow both intellectually and personally. For these purposes, the following rules and guidelines will be applied. 
+``Academic Dishonesty" is the transfer, receipt, or use of academic information, or the attempted transfer, receipt, or use of academic information in a manner not authorized by the instructor or by university rules. It includes, but is not limited to, cheating and plagiarism as well as aiding or encouraging another to commit academic dishonesty. 
+``Cheating" is defined as wrongfully giving, taking, or presenting any information or material borrowed from another source - including the Internet by a student with the intent of aiding himself or another on academic work. This includes, but is not limited to a test, examination, presentation, experiment or any written assignment, which is considered in any way in the determination of the final grade. 
+``Plagiarism" is the taking or attempted taking of an idea, a writing, a graphic, music composition, art or datum of another without giving proper credit and presenting or attempting to present it as one's own. It is also taking written materials of one's own that have been used for a previous course assignment and using it without reference to it in its original form. 
+Students are encouraged to ask their instructor(s) for clarification regarding their academic dishonesty standards. 
+
+You may \textbf{NOT} use Google, SourceForge, stackoverflow, classmates, or any other source for code. Unless you talk to me before hand, you should not use ANY outside sources of code for this class. You may talk to your classmates, but you should \textbf{NEVER:} exchange code, tell someone else your code, show someone your code, ask for code, etc. You are expected to understand your projects and all code therein. I reserve the right to question you about any part of your code and adjust your grade accordingly. If I suspect cheating of any form I will investigate it thoroughly and report any incidents. I have done it before and if I, sadly, have little doubt I will do it again.
+
+\vskip.15in
+\noindent\textbf{Disability Services}: 
+If there is any student in this class who thinks they may have need
+of accommodations, they should review the requirements/procedures on Disability
+Services’ website http://www.csuniv.edu/student-success/disabilityservices.php. Once a
+student has been approved to receive accommodations through Disability Services,
+they will need to contact this instructor.
+Nondiscrimination Policy and Student Rights
+Charleston Southern University does not illegally discriminate on the basis of race,
+color, national or ethnic origin, sex, disability, age, religion, genetic information, veteran
+or military status, or any other basis. Inquiries regarding the non-discrimination policies
+should be directed to Latitia R. Adams, Title IX Coordinator, 843-863-7374,
+ladams@csuniv.edu. Students should refer to the CSU Student Handbook
+(http://www.csuniv.edu/docs/studenthandbook.pdf) to be fully informed of their rights
+and remedies.
+Evaluations: In order to pursue our mission of ‘Academic Excellence in a Christian
+Environment’, it is important that we receive feedback from students to let us know how
+are doing. In order to save time and paper this process is online, and should be
+available sometime in the second half of the semester. Students are strongly
+encouraged to complete the short evaluation, which is entirely anonymous. Your
+professor will let you know when this is active, and you can then access it through your
+MyCSU account. We greatly value your opinion!
+
+\vskip.15in
+\noindent\textbf{Extra Help}: 
+ Dot not hesitate to come to my office during office hours or by appointment to discuss a homework problem or any aspect of the course.
+
+\vskip.15in
+\noindent\textbf{Disability Services}: If there is any student in this class who thinks they may have need of accommodations, they should review the requirements/procedures on Disability Services’ website http://www.csuniv.edu/student-success/disabilityservices.html. Once a student has been approved to receive accommodations through Disability Services, they will need to contact this instructor.
+
+\vskip.15in
+\noindent\textbf{Course Evaluations}:
+During the 2nd half of the semester. Students are strongly encouraged to complete the short evaluation, which is entirely anonymous. Your professor will let you know when this is active, and you can then access it through your MyCSU account. We greatly value your opinion!
+
+\vskip.15in
+\noindent\textbf{Online Students}:
+I understand that some students must take this class online.  Be aware that the lack of face to face communication puts online students at a disadvantage.  Therefore communication is paramount.  I will be able to answer your email during office hours.  I am not able (due to security reasons) to receive notifications of emails outside of my office.  Please keep the timing of due dates for labs in mind as I may not be able to respond if you have issues.  In other words, get started early!
+
+\vskip.15in
+\noindent\textbf{Weekends}:
+I observe the Sabbath on Sunday. On Saturday I spend most of the day with my family.  Therefore, I shall not be able to communicate on Sunday and there is a low chance I will on Saturday.  Please keep this in mind when working on assignments--especially for the online students!
+
+\vskip.15in
+\noindent\textbf{Class Recording}:
+I do record my classes via screen capture and camera.  After class (or during lab) I will upload and post a link on BlackBoard.  This is done both for online students and so you can review the material.  If you do not see the content within 24 hours of class, please email me a reminder.
+
+\vskip.15in
+\noindent\textbf{Additional Information}
+
+Since this is a difficult class, do not allow yourself to fall behind. There is a significant snowball potential. This class requires significantly more work than previous classes. Expect to put many (10, 20, or 30 depending on your skill) hours into the projects. Do \textbf{not} wait until the last moment. \textbf{Do} come to me for help in office hours. \textbf{Do} discuss your designs and ideas with me and not just your programming bugs.
+
+\vskip.15in
+\noindent\textbf{Nondiscrimination Policy and Student Rights}
+
+Charleston Southern University does not illegally discriminate on the basis of race, color, national or ethnic origin, sex, disability, age, religion, genetic information, veteran or military status, or any other basis. Inquiries regarding the non-discrimination policies should be directed to Latitia R. Adams, Title IX Coordinator, 843-863-7374, ladams@csuniv.edu. Students should refer to the CSU Student Handbook \\ (http://www.csuniv.edu/docs/studenthandbook.pdf) to be fully informed of their rights and remedies. 
+
+\vskip.15in
+\noindent\textbf{Important Dates and course outline}:
+\begin{center} \begin{minipage}{5in}
+\begin{flushleft}
+Drop/Add Deadline \dotfill August 30\\
+Withdraw with 'W' \dotfill October 18 \\
+Course Final \dotfill TBD\\
+\end{flushleft}
+\end{minipage}
+\end{center}
+
+\end{document}

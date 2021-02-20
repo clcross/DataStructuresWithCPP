@@ -1,0 +1,10 @@
+Problem1
+	Problem 1 has a theoritical Big O of n
+Problem2
+	Problem 2 has a theoritical Big O of n
+Problem3
+	Problem 3 has a theoritical Big O of n^2
+Problem4
+	Problem 4 has a theoritical Big O of log(n)
+Problem5
+	Problem 5 has a theoritical Big O of n

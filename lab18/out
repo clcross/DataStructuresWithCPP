@@ -1,0 +1,25 @@
+In file included from src/hashtable.hpp:54:0,
+                 from /home/student/csci-315-fall-2019/lab18/test/insert-test.cpp:4,
+                 from test/test-runner.cpp:23:
+src/hashtable.cpp: In instantiation of ‘void HashTable<K, V>::print() const [with K = int; V = int]’:
+/home/student/csci-315-fall-2019/lab18/test/insert-test.cpp:11:22:   required from here
+src/hashtable.cpp:30:23: error: passing ‘const HashNode<int, int>’ as ‘this’ argument discards qualifiers [-fpermissive]
+             std::cout << (*j).getKey() << " -> " << (*j).getValue() << "\n";
+                        
+In file included from /home/student/csci-315-fall-2019/lab18/test/insert-test.cpp:4:0,
+                 from test/test-runner.cpp:23:
+src/hashtable.hpp:15:12: note:   in call to ‘K& HashNode<K, V>::getKey() [with K = int; V = int]’
+         K& getKey() { return key; }
+            ^~~~~~
+In file included from src/hashtable.hpp:54:0,
+                 from /home/student/csci-315-fall-2019/lab18/test/insert-test.cpp:4,
+                 from test/test-runner.cpp:23:
+src/hashtable.cpp:30:50: error: passing ‘const HashNode<int, int>’ as ‘this’ argument discards qualifiers [-fpermissive]
+             std::cout << (*j).getKey() << " -> " << (*j).getValue() << "\n";
+                                                   
+In file included from /home/student/csci-315-fall-2019/lab18/test/insert-test.cpp:4:0,
+                 from test/test-runner.cpp:23:
+src/hashtable.hpp:16:12: note:   in call to ‘V& HashNode<K, V>::getValue() [with K = int; V = int]’
+         V& getValue() { return val; }
+            ^~~~~~~~
+make: *** [insert-test] Error 1

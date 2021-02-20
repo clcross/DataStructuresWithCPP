@@ -1,0 +1,175 @@
+\documentclass[12pt]{article}
+\usepackage{listings}
+\usepackage{color}
+\textwidth=7in
+\textheight=9.5in
+\topmargin=-1in
+\headheight=0in
+\headsep=.5in
+\hoffset  -.85in
+
+\definecolor{mygray}{rgb}{0.4,0.4,0.4}
+\definecolor{mygreen}{rgb}{0,0.8,0.6}
+\definecolor{myorange}{rgb}{1.0,0.4,0}
+
+\lstset{
+basicstyle = \ttfamily,columns=fullflexible,
+commentstyle=\color{mygray},
+frame=single,
+numbers=left,
+numbersep=5pt,
+numberstyle=\tiny\color{mygray},
+keywordstyle=\color{mygreen},
+showspaces=false,
+showstringspaces=false,
+stringstyle=\color{myorange},
+tabsize=2
+}
+
+\usepackage{hyperref}
+
+\pagestyle{empty}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\begin{document}
+
+\begin{center}
+{\bf Project 3: Balanced Binary Search Tree}
+
+\end{center}
+
+\setlength{\unitlength}{1in}
+
+\begin{picture}(6,.1) 
+\put(0,0) {\line(1,0){6.25}}         
+\end{picture}
+
+\renewcommand{\arraystretch}{2}
+\setlength{\tabcolsep}{6pt} % General space between cols (6pt standard)
+\renewcommand{\arraystretch}{.5} % General space between rows (1 standard)
+
+\vskip.15in
+\noindent\textbf{Instructions:} In our labs we have used unbalanced Binary Search Trees.  In this project: 
+\begin{enumerate}
+\item Pick two balanced binary search tree implementations (AVL, Red-Black, ScapeGoat, 2-3, AA, Splay, Treap, etc) and implement our interface.
+\item Next research what situations each perform better or worse in.  Namely:
+\begin{enumerate}
+\item Tell me the situation one exhibits better performance.
+\item Tell me why you believe that is the case.
+\end{enumerate}
+\item Then generate test cases show one performing better than the other.  \textit{\textbf{Generate a performance graph.}}
+\end{enumerate}
+
+\underline{\textit{\textbf{You may add functions to our Binary Tree implementation!}}}
+
+\noindent\textbf{Internet:} You may make full use of the internet for this project, except for the generation of the performance graphs.\\
+
+\noindent\textbf{Warning:} I have been informed that online versions of Red-Black trees are faulty!\\
+
+
+%Afterwards, implement preorder and postorder traversal for your Binary Search Tree.  Lastly implement a function inorderTraversal, that takes a function as a parameter and call the function on each element.
+
+\begin{lstlisting}[language=C++]{Name=test2}
+#ifndef BINARY_TREE_H
+#define BINARY_TREE_H
+
+#include <string>
+
+template<class T>
+class BinaryTreeNode {
+    public:
+        BinaryTreeNode<T> () {
+        }
+};
+
+template<class T>
+class BinaryTree {
+    private:
+        /* You fill in private member data. */
+
+    public:
+
+        /* Creates an empty binary tree. */
+        BinaryTree();
+
+        /* Does a deep copy of the tree. */
+        BinaryTree(const BinaryTree<T> &tree);
+
+        /* Add a given value to the Binary Tree. 
+         * Must maintain ordering!
+         */
+        void put(const T &val);
+
+        /* Returns the height of the binary tree. */
+        int getHeight();
+
+        /* Returns true if an item exists in the Binary Tree */
+        bool contains(const T &val) const;
+
+        /* Removes a specific val from the Binary Tree.
+         * Returns true if the value exists (and was removed.)
+         * Otherwise, returns false.
+         */
+        bool remove(const T &val);
+
+        /* Returns a string representation of the binary Tree in order. */
+        std::string inorderString();
+
+        /* Returns a string representation of the binary Tree in order. */
+        std::string preorderString();
+
+        /* Returns a string representation of the binary Tree in order. */
+        std::string postorderString();
+
+        /* Always free memory. */
+        ~BinaryTree();
+};
+
+/* Since BinaryTree is templated, we include the .cpp.
+ * Templated classes are not implemented until utilized (or explicitly 
+ * declared.)
+ */
+#include "binarytree.cpp"
+
+#endif
+\end{lstlisting}
+
+\vskip.15in
+\noindent\textbf{Additional Resources:} \\
+\url{http://opendatastructures.org/versions/edition-0.1c/ods-cpp.pdf}
+
+\vskip.15in
+\noindent\textbf{Analysis Report:} \\
+You shall describe one situation were each balanced tree algorithm is better than the other (2 in total.)  These metrics may be insertion time, retrieval time, deletion time, memory usage or any other functional test.  As with most metrics a line graph (with size of tree on the x axis/time on y axis) shall depict the difference clearly.
+
+\vskip.15in
+\noindent\textbf{Write some test cases:} \\
+Create some test cases, using cxxtestgen, that you believe would cover all aspects of your code.
+
+\vskip.15in
+\noindent\textbf{STL:} \\
+You may utilize anything from the STL that does not implement a balanced Binary Tree. (Example: Do not use map)
+
+\vskip.15in
+\noindent\textbf{Memory Management:} \\
+Now that we are using new, we must ensure that there is a corresponding delete to free the memory.  Ensure there are no memory leaks in your code!  Please run Valgrind on your tests to ensure no memory leaks!
+\vskip.15in
+
+\vskip.15in
+\noindent\textbf{How to turn in:} \\
+Turn in via GitHub.  Ensure the file(s) are in your directory and then:
+\begin{itemize}
+\item \$ git add $<$files$>$
+\item \$ git commit 
+\item \$ git push
+\end{itemize}
+
+\vskip.15in
+\noindent\textbf{Due Date:}
+November 13, 2019 2359
+
+\vskip.15in
+\noindent\textbf{Teamwork:} No teamwork, your work must be your own.  Please cite what resource you used for your balanced binary tree and research.  (Yes, you may use the internet!)\\
+
+\end{document}

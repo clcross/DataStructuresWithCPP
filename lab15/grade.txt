@@ -1,0 +1,29 @@
+******************* inRange Test *********************
+g++ -o bt-test -g -I src/ --std=c++14 src/binarytree.cpp src/main.cpp
+Failures = 
+MAKE_ERROR = 
++ 25.000 pts of 25.000
+Total grade so far: 25.000
+******************* contains test *********************
+g++ -o bt-test -g -I src/ --std=c++14 src/binarytree.cpp src/main.cpp
+Failures = 
+MAKE_ERROR = 
++ 25.000 pts of 25.000
+Total grade so far: 50.000
+******************* count in range test *********************
+g++ -o bt-test -g -I src/ --std=c++14 src/binarytree.cpp src/main.cpp
+Failures = 
+MAKE_ERROR = 
++ 25.000 pts of 25.000
+Total grade so far: 75.000
+******************* traversal test *********************
+g++ -o bt-test -g -I src/ --std=c++14 src/binarytree.cpp src/main.cpp
+Failures = 
+MAKE_ERROR = src/binarytree.cpp:270:21: error: passing 'const BinaryTree<int>' as 'this' argument discards qualifiers [-fpermissive]
+src/binarytree.cpp:272:21: error: passing 'const BinaryTree<int>' as 'this' argument discards qualifiers [-fpermissive]
+src/binarytree.cpp:270:21: error: passing 'const BinaryTree<std::__cxx11::basic_string<char> >' as 'this' argument discards qualifiers [-fpermissive]
+src/binarytree.cpp:272:21: error: passing 'const BinaryTree<std::__cxx11::basic_string<char> >' as 'this' argument discards qualifiers [-fpermissive]
++ 0 pts of 25.000
+Total grade so far: 75.000
+Auto-grader grade: 75.000
+*****************Finished lab15****************

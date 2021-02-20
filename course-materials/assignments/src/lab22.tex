@@ -1,0 +1,154 @@
+\documentclass[12pt]{article}
+\usepackage{listings}
+\usepackage{color}
+\textwidth=7in
+\textheight=9.5in
+\topmargin=-1in
+\headheight=0in
+\headsep=.5in
+\hoffset  -.85in
+
+\definecolor{mygray}{rgb}{0.4,0.4,0.4}
+\definecolor{mygreen}{rgb}{0,0.8,0.6}
+\definecolor{myorange}{rgb}{1.0,0.4,0}
+
+\lstset{
+basicstyle = \ttfamily,columns=fullflexible,
+commentstyle=\color{mygray},
+frame=single,
+numbers=left,
+numbersep=5pt,
+numberstyle=\tiny\color{mygray},
+keywordstyle=\color{mygreen},
+showspaces=false,
+showstringspaces=false,
+stringstyle=\color{myorange},
+tabsize=2
+}
+
+\pagestyle{empty}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\begin{document}
+
+\begin{center}
+{\bf lab 22 Graphs via Adjacency Matrix}
+
+\end{center}
+
+\setlength{\unitlength}{1in}
+
+\begin{picture}(6,.1) 
+\put(0,0) {\line(1,0){6.25}}         
+\end{picture}
+
+\renewcommand{\arraystretch}{2}
+\setlength{\tabcolsep}{6pt} % General space between cols (6pt standard)
+\renewcommand{\arraystretch}{.5} % General space between rows (1 standard)
+
+\vskip.15in
+\noindent\textbf{Instructions:} In this lab implement a Graph with an adjacency matrix.
+
+Implement the following class:
+\begin{lstlisting}[language=C++]{Name=test2}
+#ifndef GRAPHAM_H
+#define GRAPHAM_H
+
+/* This class represents a weighted directed graph via an adjacency matrix.
+ * Vertices are given an index, starting from 0 and ascending
+ * Class W : W represent the weight that can be associated with an edge.
+ * We will not weight the vertices.
+ * W is the data type for the weight.  Normally an int.
+ */
+
+template<class W>
+class GraphAM {
+    private:
+        /* Recommended, but not necessary. */
+        void depthFirstTraversal(void (*visit)(const int node),
+                int *visited, const int cVertex);
+        /* You fill out private member variables. */
+    public:
+        /* Initialize an empty graph. */
+        GraphAM();
+
+        /* Initialize the Graph with a fixed number of vertices. */
+        GraphAM(const int vertices);
+
+        /* Deconstructor shall free up memory */
+        ~GraphAM();
+
+        /* Removes a vertex. 
+         * return whether successful or not
+         * Note: You must shift all vertices accordingly.
+         */
+        bool removeVertex(int idx);
+
+        /* Adds amt vertices to the graph. Returns the starting point 
+         * of the vertice count.
+         */
+        int addVertices(int amt);
+
+        /* Adds an edge with weight W to the graph.
+         * The return is for you convience and will not be graded.
+         */
+        bool addEdge(const int start, const int end, const W &weight);
+
+        /* 
+         * Remove edge from graph.
+         * The return is for you convience and will not be graded.
+         */
+        bool removeEdge(const int start, const int end);
+
+        void depthFirstTraversal(void (*visit)(const int node));
+        void breadthFirstTraversal(void (*visit)(const int node));
+
+        /*
+         * Return adjacent weight from start to end (or -1 if they are
+         * not adjacent.
+         */
+        W adjacent(const int start, const int end);
+
+        /* Run Dijkstra's Shortest Path to find the shortest path from start
+         * to end and returning that smallest weight.
+         * return -1 if a path does not exist!
+         */
+        W dijkstraShortestPath(const int start, const int end);
+
+        /* Print out the Graph */
+        void print() const;
+
+};
+
+#include "grapham.cpp"
+
+#endif
+\end{lstlisting}
+
+\vskip.15in
+\noindent\textbf{Write some test cases:} \\
+Create some test cases, using cxxtestgen, that you believe would cover all aspects of your code.
+
+\vskip.15in
+\noindent\textbf{Memory Management:} \\
+Now that are using new, we must ensure that there is a corresponding delete to free the memory.  Ensure there are no memory leaks in your code!  Please run Valgrind on your tests to ensure no memory leaks!
+\vskip.15in
+
+\vskip.15in
+\noindent\textbf{How to turn in:} \\
+Turn in via GitHub.  Ensure the file(s) are in your directory and then:
+\begin{itemize}
+\item \$ git add $<$files$>$
+\item \$ git commit 
+\item \$ git push
+\end{itemize}
+
+\vskip.15in
+\noindent\textbf{Due Date:}
+November 25, 2019 2359
+
+\vskip.15in
+\noindent\textbf{Teamwork:} No teamwork, your work must be your own.
+
+\end{document}

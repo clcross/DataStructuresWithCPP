@@ -1,0 +1,56 @@
+I am run number 003418.
+Pulling source code...
+------------------------------------------------
+Changes found in lab23
+------------------------------------------------
+*****************Examining lab23****************
+******************* add-edge Test *********************
+g++ -o gam-test -g -I src/ --std=c++14 src/graphal.cpp src/main.cpp
+Failures = 
+MAKE_ERROR = 
++ 10.000 pts of 10.000
+Total grade so far: 10.000
+******************* adjacent Test *********************
+g++ -o gam-test -g -I src/ --std=c++14 src/graphal.cpp src/main.cpp
+Failures = 
+MAKE_ERROR = 
++ 10.000 pts of 10.000
+Total grade so far: 20.000
+******************* add vertices Test *********************
+g++ -o gam-test -g -I src/ --std=c++14 src/graphal.cpp src/main.cpp
+Failures = 
+MAKE_ERROR = 
++ 10.000 pts of 10.000
+Total grade so far: 30.000
+******************* remove edge Test *********************
+g++ -o gam-test -g -I src/ --std=c++14 src/graphal.cpp src/main.cpp
+Failures = 
+MAKE_ERROR = 
++ 10.000 pts of 10.000
+Total grade so far: 40.000
+******************* remove vertices Test *********************
+g++ -o gam-test -g -I src/ --std=c++14 src/graphal.cpp src/main.cpp
+Failures = 
+MAKE_ERROR = 
++ 10.000 pts of 10.000
+Total grade so far: 50.000
+******************* depth first Test *********************
+g++ -o gam-test -g -I src/ --std=c++14 src/graphal.cpp src/main.cpp
+Failures = 
+MAKE_ERROR = 
++ 15.000 pts of 15.000
+Total grade so far: 65.000
+******************* breadth first Test *********************
+g++ -o gam-test -g -I src/ --std=c++14 src/graphal.cpp src/main.cpp
+Failures = 
+MAKE_ERROR = 
++ 15.000 pts of 15.000
+Total grade so far: 80.000
+******************* Prim Test *********************
+g++ -o gam-test -g -I src/ --std=c++14 src/graphal.cpp src/main.cpp
+Failures = 2
+MAKE_ERROR = 
++ 0 pts of 20.000
+Total grade so far: 80.000
+Auto-grader grade: 80.000
+*****************Finished lab23****************

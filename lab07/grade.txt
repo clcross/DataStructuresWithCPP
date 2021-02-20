@@ -1,0 +1,20 @@
+******************* Equal Test *********************
+g++ -o array-test -O2 -I src/ --std=c++14 src/array.cpp src/main.cpp
+Failures = 
+MAKE_ERROR = 
++ 33.333 pts of 33.333
+Total grade so far: 33.333
+******************* Index Of Test *********************
+g++ -o array-test -O2 -I src/ --std=c++14 src/array.cpp src/main.cpp
+Failures = 
+MAKE_ERROR = 
++ 33.333 pts of 33.333
+Total grade so far: 66.666
+******************* Remove Test *********************
+g++ -o array-test -O2 -I src/ --std=c++14 src/array.cpp src/main.cpp
+Failures = 
+MAKE_ERROR = 
++ 33.334 pts of 33.334
+Total grade so far: 100.000
+Auto-grader grade: 100.000
+*****************Finished lab07****************

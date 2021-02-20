@@ -1,0 +1,234 @@
+\documentclass[12pt]{article}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{fancyvrb}
+\textwidth=7in
+\textheight=9.5in
+\topmargin=-1in
+\headheight=0in
+\headsep=.5in
+\hoffset  -.85in
+
+\definecolor{mygray}{rgb}{0.4,0.4,0.4}
+\definecolor{mygreen}{rgb}{0,0.8,0.6}
+\definecolor{myorange}{rgb}{1.0,0.4,0}
+
+\lstset{
+basicstyle = \ttfamily,columns=fullflexible,
+commentstyle=\color{mygray},
+frame=single,
+numbers=left,
+numbersep=5pt,
+numberstyle=\tiny\color{mygray},
+keywordstyle=\color{mygreen},
+showspaces=false,
+showstringspaces=false,
+stringstyle=\color{myorange},
+tabsize=2
+}
+
+\usepackage{hyperref}
+
+\pagestyle{empty}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\begin{document}
+
+\begin{center}
+{\bf Preview of Project 4: Minimum Overlap Coverage}
+
+\end{center}
+
+\setlength{\unitlength}{1in}
+
+\begin{picture}(6,.1) 
+\put(0,0) {\line(1,0){6.25}}         
+\end{picture}
+
+\renewcommand{\arraystretch}{2}
+\setlength{\tabcolsep}{6pt} % General space between cols (6pt standard)
+\renewcommand{\arraystretch}{.5} % General space between rows (1 standard)
+
+\vskip.15in
+\noindent\textbf{Instructions:} 
+For this project we are trying to find the Minimum Overlap of sets that still cover all points.  For example, say we have multiple group projects for our class that needed to be presented at the end of the semester.  Your professor must grade every student at least once, but want to minimize the number of total grades that must be performed.  Your professor does not mind grading multiple projects.  Due to the nature of the projects, students are members of multiple projects, but only want to present once.  How can we minimize the number of times a student has to present?  Everyone in a group has to present (no partial group presentations.) and a grade must be assigned for each group member.
+
+To recap, here are the requirements in a list:
+\begin{itemize}
+\item Each student is issued an ID number starting at 0. We do not care about their names.
+\item Each group consisted of a set of numbers.  Keep in mind that a group cannot have the student in there more than once.
+\item A query consisted of a group of numbers.  A student may be in there more than once (your professor misplaced a past grade.)
+\item When a group presents, all students are graded.
+\item Your function returns the minimum number of grades your professor has to assess.
+\item If it is not possible, return UINT\_MAX (or -1, they are the same.)
+\end{itemize}
+
+\vskip.15in
+\noindent\textbf{Files:} 
+\begin{itemize}
+\item Each file in the data directory contains groups of sets, which represent the groups that \textit{may} present.
+\item src/main.cpp is a general purpose test program for running test cases on your code.  It also produces timings.
+\item src/MinimumOverlap.hpp is the header file for your class that will compute the minimum overlap.
+\item src/MinimumOverlap.cpp is the source file for your class that will compute the minimum overlap.
+\item data/simple.set is the example data set provided below.
+\item data/small30.set is small data set for evaluating basic timings.
+\item data/medium30.set is the data set you should strive to master.
+\item data/large30.set provides a larger data set over medium30.set
+\item data/large50.set provides the largest data set I will test.
+\end{itemize}
+
+\vskip.15in
+\noindent\textbf{Set/Group File:} 
+Each set/group file contains multiple sets.  Each set is contained on one line and is space delimited list of numbers.  Each number represents a student's ID.  For Example: \\
+\begin{verbatim}
+0 2 5
+0 2 3
+1
+2 3 6
+1 4 3 
+5 6
+\end{verbatim}
+
+\begin{itemize}
+\item min("0 2 6") = 5,  which represents grading groups "0 2 5" and "5 6" for a total of 5 grades/assessments. \\
+\item min("1") = 1,  which represents grading group "1". \\
+\item min("1 2 2 3") = 7,  which represents grading groups "0 2 3", "1", "2 3 6". \\
+\end{itemize}
+
+\vskip.15in
+\noindent\textbf{Interface:} \\
+
+\begin{lstlisting}[language=C++]{Name=test2}
+#ifndef MinimumOverlap_HPP
+#define MinimumOverlap_HPP
+
+#include <string>
+#include <vector>
+
+class MinimumOverlap {
+    public:
+
+        // Passes in a string pointing to the set/group file.
+        // Make sure you store all the sets/groups!
+        MinimumOverlap(const std::string &setFile);
+
+        // Returns the minimum number of overlaps possible given a cover.
+        // If print is true, it prints the set(s).
+        unsigned int findMinimumOverlap(const std::vector<int> &cover, 
+                const bool &print) const;
+};
+
+#endif
+\end{lstlisting}
+
+\vskip.15in
+\noindent\textbf{Algorithm Setup:} \\
+
+\begin{itemize}
+\item SOFAR represents the sets you have chosen
+\item INPUT represents the student/IDs that still need to be chosen
+\item print is for your convenience.  I recommend printing debug information with print = true.
+\item min represents the minimum number of overlap found so far in a cover
+\item RESULT is what is left over from removing the evaluating set
+\end{itemize}
+
+\begin{lstlisting}[language=C++]{Name=test3}
+unsigned int findMinimumOverlap (SOFAR, INPUT, const bool &print) const {
+
+    unsigned int min = UINT_MAX;
+
+    for each set S in the set file  {
+        RESULT = INPUT subtract S
+        if (RESULT has 0 members left) {//found a cover
+            if (RESULT has fewer students selected than min) {
+                min = the size of RESULT.
+            }
+        } else {//didn't find a cover yet, so try with what is left
+            ADD (AKA append) S to SOFAR
+            // Recursively call with S
+            int cmin = findMinimumOverlap(SOFAR, RESULT, print);
+            // If the new min that was found is smaller, then update min.
+            if (cmin < min) {
+                min = cmin;
+            }
+            REMOVE S from SOFAR so we can evaluate the next S.
+        }
+    }
+    return min;
+}
+\end{lstlisting}
+
+As usual, you may not change the public interface but may add any private data and methods. Since we are using recursive backtracking you \textbf{must} add at least one additional method for the recursion to work.  Keep in mind the above is pseudo-code (I never defined ‘SOFAR’s type.) Notice that data stored in the private section SHOULD NOT depend on a particular call to findMinimumOverlap but only on the set/group file. Other data should be declared locally within findMinimumOverlap and passed as parameters when needed. Pass by reference is faster than pass by value for any data items bigger than a single integer so consider using that if you don’t change the value. Keep in mind that const does give some performance improvement, but not much.
+
+You may create as many helper classes as you would like. The public interface of those classes is completely up to you as well, subject to good design criteria. In particular, you will need have a representation (possibly as a class or struct) to represent a set/group.  You may use anything from the STL or roll your own.
+
+\vskip.15in
+\noindent\textbf{Example Runs:} \\
+
+\begin{Verbatim}[fontsize=\tiny]
+pwest@shiloh:project4$ bin/min-overlap-worst data/simple.set yes "1 2 3 4" "0 1 2 3" "0 2 4"
+Arguments were validated, calling constructor...
+Testing cover:{ 1 2 3 4 }  found a minimum of 6 elements in 0.0000 seconds
+
+Testing cover:{ 0 1 2 3 }  found a minimum of 4 elements in 0.0000 seconds
+
+Testing cover:{ 0 2 4 }  found a minimum of 6 elements in 0.0000 seconds
+
+\end{Verbatim}
+
+\begin{Verbatim}[fontsize=\tiny]
+pwest@shiloh:project4$ bin/min-overlap-60 data/small30.set yes "1 2 3 4 5 6 7 8" "0 3 7 10 12 13 14" "1 3 4 5 6 9 12" "0 1 2 3 4 5 6 7 8 9 10 11 12 13 14"
+Testing cover:{ 1 2 3 4 5 6 7 8 }  found a minimum of 17 elements in 0.0102 seconds
+
+Testing cover:{ 0 3 7 10 12 13 14 }  found a minimum of 16 elements in 0.0019 seconds
+
+Testing cover:{ 1 3 4 5 6 9 12 }  found a minimum of 21 elements in 0.0061 seconds
+
+Testing cover:{ 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 }  found a minimum of 27 elements in 0.3865 seconds
+
+Timing information written to 'data/timings.dat'
+
+\end{Verbatim}
+
+
+\begin{Verbatim}[fontsize=\tiny]
+pwest@shiloh:project4$ bin/min-overlap-70 data/large30.set yes "1 2 3 4 5 6 7 8" "0 3 7 10 12 13 14" "1 3 4 5 6 9 12" "2 4 6 8 9 12 17 21 23 24" "0 1 2 3 4 5 6 7 8 9 10 11 12 13 14"
+Testing cover:{ 1 2 3 4 5 6 7 8 }  found a minimum of 21 elements in 0.5289 seconds
+
+Testing cover:{ 0 3 7 10 12 13 14 }  found a minimum of 13 elements in 0.0735 seconds
+
+Testing cover:{ 1 3 4 5 6 9 12 }  found a minimum of 18 elements in 0.2261 seconds
+
+Testing cover:{ 2 4 6 8 9 12 17 21 23 24 }  found a minimum of 23 elements in 1.2290 seconds
+
+Testing cover:{ 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 }  found a minimum of 26 elements in 7.9759 seconds
+
+Timing information written to 'data/timings.dat'
+\end{Verbatim}
+
+\vskip.15in
+\noindent\textbf{Memory Management:} \\
+Now that we are using new, we must ensure that there is a corresponding delete to free the memory.  Ensure there are no memory leaks in your code!  Please run Valgrind on your tests to ensure no memory leaks!
+
+\vskip.15in
+\noindent\textbf{STL:} \\
+You may use anything from the STL.
+
+\vskip.15in
+\noindent\textbf{How to turn in:} \\
+Turn in via GitHub.  Ensure the file(s) are in your directory and then:
+\begin{itemize}
+\item \$ git add $<$files$>$
+\item \$ git commit 
+\item \$ git push
+\end{itemize}
+
+\vskip.15in
+\noindent\textbf{Due Date:}
+December 6, 2019 2359
+
+\vskip.15in
+\noindent\textbf{Teamwork:} No teamwork, your work must be your own.  
+
+\end{document}

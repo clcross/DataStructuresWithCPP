@@ -1,0 +1,81 @@
+﻿Lab 03: Pointers
+
+int x=7, arr[5]={0, 10, 20, 30, 40};
+For questions 1-14, the answers are each exactly ONE line of C++ code.  Also, you may assume an previous line of code you wrote are active.
+
+1) Declare a pointer p1 that is initially pointing at x. 
+	int *p1 = &x;
+
+2) Change the value of x to 63 without using x. 
+	*p1 = 63;
+
+3) Declare a pointer named p2 pointing at the first item in arr. 
+	int *p2 = &arr[0];
+
+4) Change the first item in arr to 7 without using arr. 
+	*p2 = 7;
+
+5) Change the 2nd value (the 10) in arr to 15 using [ ] and without using arr. 
+	1[p2] = 15;
+
+6) Change the 4th value (the 30) in arr to 35 without using [ ] and without using arr. 
+	*(p2 + 3) = 35;
+
+7) Change p2 to point to the second item in arr without using arr. 
+	p2 = &1[p2];	
+
+8) Change the item pointed at by p2 to 77 without using arr. 
+	*p2 = 77;
+
+9) Write a Boolean expression that returns true iff p1 and p2 are pointing to an equivalent value. 
+	if(*p1 == *p2){return true;}
+ 
+10) Write a Boolean expression that returns true iff p1 and p2 are pointing to the exact same location. 
+	if(p1 == p2){return true;}
+ 
+11) Make p1 point to a dynamically allocated integer (make sure to create that integer!) 
+	p1 = new int;
+
+12) Free the memory at p1. 
+	delete [] p1;
+
+13) Make p1 point to a dynamically allocated array of x integers (again, create that array!) 
+	p1 = new int[x];
+
+14) Free the memory at p1.
+	delete [] p1;
+
+15) (4 points) Describe what is wrong with the following code segment, assuming it is all part of main(). Indicate if something is a compile time or runtime error or just bad programming. Also indicate how you would fix it. Line numbers have been added in ( ) for ease of reference.  There are several things with the code and for full credit you must find all of them.
+
+(1) int *p;
+(2) *p=5;
+(3) p=new int();
+(4) *p=7;
+(5) p=new int();
+(6) *p=9;
+(7) delete p;
+(8) *p=15;
+
+Problems: 
+	There aren't any errors when compiling, but this does have runtime errors with valgrind do to bad programming. Line (1) creates the pointer b ut doesnt have what it should be pointing to, so when *p is assigned to 5 in line (2) it causes a runtime error and seg fault. the fix to that is changing line (1) to look like "int *p=new int();".
+	I would also suggest makeing other pointers for the values to make it easier to work with.
+	it would look like this:
+	int *p1=new int();
+	*p1=5;
+	int *p2=new int();
+	*p2=7;
+	int *p3=new int();
+	*p3=9;
+	int *p4=new int();
+	*p4=15;
+	delete p1;
+	delete p2;
+	delete p3;
+	delete p4;
+
+16) (2 points) Describe the difference between statically (stack) and dynamically(heap) allocated memory. Why does C++ support both types?
+	The stack storage is known at runtime while the heap is less organized and stored as the program runs. C++ supports both so the system know some of the space it will use to run the program.
+
+
+
+Due: September 16, 2019 2359

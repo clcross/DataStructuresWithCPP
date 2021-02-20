@@ -1,0 +1,22 @@
+******************* Queue test PART *********************
+mkdir -p obj
+g++ -c -g -I src/ src/queue.cpp -o obj/queue.o
+g++ -g -I src/ obj/queue.o src/main.cpp -o stack-test
+Failures = 
+MAKE_ERROR = 
++ 33.333 pts of 33.333
+Total grade so far: 33.333
+******************* Priority PART *********************
+make: Nothing to be done for 'all'.
+Failures = 
+MAKE_ERROR = 
++ 33.333 pts of 33.333
+Total grade so far: 66.666
+******************* depth first search PART *********************
+make: Nothing to be done for 'all'.
+Failures = 4
+MAKE_ERROR = 
++ 6.666 pts of 33.334
+Total grade so far: 73.332
+Auto-grader grade: 73.332
+*****************Finished lab11****************

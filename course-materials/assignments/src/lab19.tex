@@ -1,0 +1,130 @@
+\documentclass[12pt]{article}
+\usepackage{listings}
+\usepackage{color}
+\textwidth=7in
+\textheight=9.5in
+\topmargin=-1in
+\headheight=0in
+\headsep=.5in
+\hoffset  -.85in
+
+\definecolor{mygray}{rgb}{0.4,0.4,0.4}
+\definecolor{mygreen}{rgb}{0,0.8,0.6}
+\definecolor{myorange}{rgb}{1.0,0.4,0}
+
+\lstset{
+basicstyle = \ttfamily,columns=fullflexible,
+commentstyle=\color{mygray},
+frame=single,
+numbers=left,
+numbersep=5pt,
+numberstyle=\tiny\color{mygray},
+keywordstyle=\color{mygreen},
+showspaces=false,
+showstringspaces=false,
+stringstyle=\color{myorange},
+tabsize=2
+}
+
+\pagestyle{empty}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\begin{document}
+
+\begin{center}
+{\bf lab 19 Hash Tables with Open Addressing}
+
+\end{center}
+
+\setlength{\unitlength}{1in}
+
+\begin{picture}(6,.1) 
+\put(0,0) {\line(1,0){6.25}}         
+\end{picture}
+
+\renewcommand{\arraystretch}{2}
+\setlength{\tabcolsep}{6pt} % General space between cols (6pt standard)
+\renewcommand{\arraystretch}{.5} % General space between rows (1 standard)
+
+\vskip.15in
+\noindent\textbf{Instructions:} This lab continues our study of Hash Tables.  In this lab implement a Hash Table with open addressing.  You are free to choose which open addressing routine to use, but you must implement a programmable load factor.  Implement a Hash Table whose constructor take an integer (the initial size of the hash table) and a load factor, insert, remove, and get.  Hints: if the value is not found in the Hash Table return a value using the default constructor.
+
+\textbf{WARNING:} The loadFactor function \textbf{\textit{must}} work properly for you to pass \textbf{\textit{any}} tests.
+
+\begin{lstlisting}[language=C++]{Name=test2}
+#ifndef HASH_TABLE_H
+#define HASH_TABLE_H
+
+/* HashTable via open addressing */
+template<class K, class V>
+class HashTable {
+    private:
+        /* Class to begin filling out...*/
+    public:
+        /* Initialize the Hash Table with size size. */
+        HashTable(const int size, const float loadFactor);
+
+        /* Deconstructor shall free up memory */
+        ~HashTable();
+
+        /* Map key -> val.
+         * Return true if sucessful (it is unique.)
+         * Otheriwise return false.
+         */
+        bool insert(const K &key, const V &val);
+
+        /* Print out the HashTable */
+        void print() const;
+
+        /* Remove the val associated with key.
+         * Return true if found and removed.
+         * Otherwise return false.
+         */
+        bool remove(const K &key);
+
+        /* Retrieves the V val that key maps to. */
+        V& operator[](const K &key);
+
+        /* Returns the current loadfactor for the Hash table (not the one
+         * passed in.)
+         * NOTE: When you hit the load factor, double the size of your array.
+         * WARNING: This function must work properly for you to pass ANY tests.
+         */
+        float percentFull();
+};
+
+int hashcode(int key);
+int hashcode(const std::string &key);
+
+#include "hashtable.cpp"
+
+#endif
+\end{lstlisting}
+
+\vskip.15in
+\noindent\textbf{Write some test cases:} \\
+Create some test cases, using cxxtestgen, that you believe would cover all aspects of your code.
+
+\vskip.15in
+\noindent\textbf{Memory Management:} \\
+Now that are using new, we must ensure that there is a corresponding delete to free the memory.  Ensure there are no memory leaks in your code!  Please run Valgrind on your tests to ensure no memory leaks!
+\vskip.15in
+
+\vskip.15in
+\noindent\textbf{How to turn in:} \\
+Turn in via GitHub.  Ensure the file(s) are in your directory and then:
+\begin{itemize}
+\item \$ git add $<$files$>$
+\item \$ git commit 
+\item \$ git push
+\end{itemize}
+
+\vskip.15in
+\noindent\textbf{Due Date:}
+November 13, 2019 2359
+
+\vskip.15in
+\noindent\textbf{Teamwork:} No teamwork, your work must be your own.
+
+\end{document}

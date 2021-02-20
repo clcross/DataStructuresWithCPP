@@ -1,0 +1,44 @@
+    1.
+	a. z = 32
+	b. The variable 'y' holds the memory address of the variable 'x'.
+	c. They exist on the stack.
+
+    2.
+	a. z = 200
+	b. they exist on the stack.
+	c.  this is a bad practice because it is converting int to long and then converting long back to int with "%d" to display.
+DPW: for c) the code is manually setting a memory address.  You don't know if that is a legal address! -5
+    3. 
+	a. z should be null because the value of x[25] is not set yet.
+	b. 'x' is in the heap while 'z' is in the stack.
+	c. the entire memory slot for the 100 values of 'x' are stored on the heap.
+	d. the memory issue is that 'z' is calling and uninillalized value in 'x'.
+                                           (using)
+
+    4.
+	a. y[10] = 20 because 'int *y = x+10;' makes the values of 'y' 10 more than the values of 'x'. 'y[0] = 10' while 'x[0] = 0'.
+	b. delete[] x;
+	c. tou don't have to write code to free 'y' it is already freed in the code.
+DPW: For c) since y is an alias of x, you can free the memory using x or y! -5
+
+    5.
+	a. 'x' and 'y' are both pointing to a memory space allocated for diffeerent array of size [100].
+	b. 10 and 90
+	c. 'z' points to the memory slot of 'x' and 'y' so (*z) means the value of that memory slot. which means (*z)[10] gives the value of the memory slot at index 10.
+	d. there 2 different outputs because the first output is after 'z = &x;' and the second is after 'z = &y;'. this happens since 'x' and 'y' have different values.
+	e. delete[] x;
+	   delete[] y;
+
+    6.
+	a. students is a pointer to an array of 100 Student. 
+	b. studentsPtr is an array of 100 Student pointers.
+	c. studentsPtr is being sorted.
+
+	d.for (int i = 0; i < 100; i++) {
+       	      students = studentsPtr[i];
+          }
+DPW: Close!  This will not work if you try it!  -3
+
+	e. delete[] students;
+	   delete[] studentsPtr
+

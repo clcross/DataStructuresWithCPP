@@ -1,0 +1,13 @@
+******************* add Test *********************
+g++ -o quad-tree-test -g -I src/ --std=c++14 -O2 src/quadtree.cpp src/main.cpp
+******************* timed add Test *********************
+g++ -o quad-tree-test -g -I src/ --std=c++14 -O2 src/quadtree.cpp src/main.cpp
+******************* remove Test *********************
+g++ -o quad-tree-test -g -I src/ --std=c++14 -O2 src/quadtree.cpp src/main.cpp
+******************* timed remove Test *********************
+g++ -o quad-tree-test -g -I src/ --std=c++14 -O2 src/quadtree.cpp src/main.cpp
+******************* range Test *********************
+g++ -o quad-tree-test -g -I src/ --std=c++14 -O2 src/quadtree.cpp src/main.cpp
+******************* timed range Test *********************
+g++ -o quad-tree-test -g -I src/ --std=c++14 -O2 src/quadtree.cpp src/main.cpp
+Auto-grader grade: *****************Finished lab24****************

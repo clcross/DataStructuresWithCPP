@@ -1,0 +1,18 @@
+In this project i compared the AVL and Splay implementations on the self-balancing binary tree.
+
+I have composed 2 graphs 
+
+	One called AVL_better.pdf which shows that as the size of the tree grows the time it takes for the function to 
+	find the height of the tree is faster than it is in the Splay tree, because the AVL tree uses recursive calls to functions that are
+	independent if each other so depth or height functions can be called along side them.
+	Like in this case i inserted then recored the time it took to find the height which is faster because it doesnt have overlapping
+	calls.
+
+	The other graph shows the complete benefit of insertion with the Splay implementation. This one is called Splay_better.pdf.
+	It shows how Splay has a Amortized O(logn) while AVL has a O(logn). this just means that the size of the tree doesn't effect the 
+	insertion speed with size as bad as it does for regular O(logn). On the graph you can see the difference in time with the Splay line 
+	on the very bottom of the graph and the AVL tree's line quickly running off the top of the graph. The Amortized O(logn) is due to 
+	Splay not uses as many rotates and has smarter check cases in the insert function to put the new value in a spot quicker.
+
+website I used to get AVL implementation https://www.tutorialspoint.com/cplusplus-program-to-implement-avl-tree
+website I used to get Splay implementation https://www.tutorialspoint.com/cplusplus-program-to-implement-splay-tree

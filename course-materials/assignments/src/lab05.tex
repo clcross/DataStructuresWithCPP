@@ -1,0 +1,247 @@
+\documentclass[12pt]{article}
+\usepackage{listings}
+\usepackage{color}
+\textwidth=7in
+\textheight=9.5in
+\topmargin=-1in
+\headheight=0in
+\headsep=.5in
+\hoffset  -.85in
+
+\definecolor{mygray}{rgb}{0.4,0.4,0.4}
+\definecolor{mygreen}{rgb}{0,0.8,0.6}
+\definecolor{myorange}{rgb}{1.0,0.4,0}
+
+\lstset{
+basicstyle = \ttfamily,columns=fullflexible,
+commentstyle=\color{mygray},
+frame=single,
+numbers=left,
+numbersep=5pt,
+numberstyle=\tiny\color{mygray},
+keywordstyle=\color{mygreen},
+showspaces=false,
+showstringspaces=false,
+stringstyle=\color{myorange},
+tabsize=2
+}
+
+\pagestyle{empty}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\begin{document}
+
+\begin{center}
+{\bf lab 05 Pointers}
+
+\end{center}
+
+\setlength{\unitlength}{1in}
+
+\begin{picture}(6,.1) 
+\put(0,0) {\line(1,0){6.25}}         
+\end{picture}
+
+\renewcommand{\arraystretch}{2}
+\setlength{\tabcolsep}{6pt} % General space between cols (6pt standard)
+\renewcommand{\arraystretch}{.5} % General space between rows (1 standard)
+
+\vskip.15in
+\noindent\textbf{Instructions:} It is \textbf{\textit{\underline{vital}}} that you understand pointers and, consequently, the different memory spaces: static, stack, and heap.  Please answer the following questions:
+
+\vskip.15in
+\noindent\textbf{Note:} When a question asks for the \textit{value} of a variable, if it is a known number write the number.  If it is a memory address write what the memory address is pointing to (Ex: The variable x holds the memory address of the variable y.)  If it cannot be determined, write undefined.
+
+
+\begin{enumerate}
+\item (15 pts) Consider the following code:\\
+\begin{lstlisting}
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+    int x = 32;
+    int *y = &x;
+    int z = *y;
+    printf("z = %d\n", z);
+    return 0;
+}
+
+\end{lstlisting}
+\begin{enumerate}
+\item What is the output?
+\item What is the \textit{value} of y?
+\item In what memory (static, stack, or heap) do the variable x, y, z exist during runtime?
+\end{enumerate}
+
+
+\item (15 pts) Consider the following code:\\
+\begin{lstlisting}
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+    int *x = (int *)200;
+    long z = (long)x;
+    printf("z = %d\n", z);
+    return 0;
+}
+
+\end{lstlisting}
+\begin{enumerate}
+\item What is the output?
+\item In what memory (static, stack, or heap) do the variable x, z exist during runtime?
+\item Why is this code bad practice (even though it compiles/runs without a seg fault)?
+\end{enumerate}
+
+\pagebreak
+
+\item (15 pts) Consider the following code:\\
+\begin{lstlisting}
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+    int *x = new int[100];
+    x[0] = 500;
+    int z = x[25];
+    printf("z = %d\n", z);
+    return 0;
+}
+\end{lstlisting}
+\begin{enumerate}
+\item What is the output? (Careful, a compile/run will not give you the correct answer.)
+\item In what memory (static, stack, or heap) do the variable x, z exist during runtime?
+\item What is stored on the heap?
+\item What is the memory issue?
+\end{enumerate}
+
+\item (15 pts) Consider the following code:\\
+\begin{lstlisting}
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+    int *x = new int[100];
+    int *y = x+10;
+
+    for (int i = 0; i < 100; i++) {
+        x[i] = i;
+    }
+
+    printf("y[10] = %d\n", y[10]);
+    return 0;
+}
+
+\end{lstlisting}
+\begin{enumerate}
+\item Why is the output?: \\
+y[10] = 20 \\
+\item Write a line of code that would free up memory using only x.
+\item Write a line of code that would free up memory using only y.
+\end{enumerate}
+
+\pagebreak
+
+\item (15 pts) Consider the following code:\\
+\begin{lstlisting}
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+    int *x = new int[100];
+    int *y = new int[100];
+    int **z = NULL;
+
+    for (int i = 0; i < 100; i++) {
+        x[i] = i;
+        y[i] = 100-i;
+    }
+
+    z = &x;
+    printf("(*z)[10] = %d\n", (*z)[10]);
+    z = &y;
+    printf("(*z)[10] = %d\n", (*z)[10]);
+    return 0;
+}
+\end{lstlisting}
+\begin{enumerate}
+\item What is the \textit{value} of x and y?
+\item What is the \textit{value} z on lines 14 and 16?
+\item What does the code fragment ``(*z)[10]'' mean? (Describe what the code must do the evaluate that code fragment.)
+\item Why are there two different outputs for ``(*z)[10]''?  Here is the output of the program:
+(*z)[10] = 10 \\
+(*z)[10] = 90
+\item Write the commands to free memory.
+\end{enumerate}
+
+\pagebreak
+
+\item (25 pts) Consider the following code:\\
+\begin{lstlisting}
+#include <stdio.h>
+#include <stdlib.h>
+
+class Student {
+    public:
+        int mId;
+        double mGPA;
+};
+
+int main(int argc, char *argv[]) {
+    Student *students = new Student[100];
+    Student ** studentsPtr = new Student*[100];
+
+    srand(100); // Seed random number generator
+    for (int i = 0; i < 100; i++) {
+        students[i].mId = i+1;
+
+        // Generate a "random" GPA from 0.0-4.0
+        students[i].mGPA = 4 * (((double)rand())/RAND_MAX);
+
+        studentsPtr[i] = students+i;
+    }
+
+    // This is Bubble Sort:
+    for (int i = 0; i < 100; i++) {
+        for (int j = 1; j < 100; j++) {
+            // Based on GPA
+            if (studentsPtr[j-1]->mGPA > studentsPtr[j]->mGPA) {
+                Student *temp = studentsPtr[j];
+                studentsPtr[j] = studentsPtr[j-1];
+                studentsPtr[j-1] = temp;
+            }
+        }
+    }
+
+    for (int i = 0; i < 100; i++) {
+        printf("%f\n", studentsPtr[i]->mGPA);
+    }
+
+    return 0;
+}
+
+\end{lstlisting}
+\begin{enumerate}
+\item What is the \textit{value} of students?
+\item What is the \textit{value} of studentsPtr?
+\item Which of the above is being sorted?
+\item Write the code to sort students without nesting for loopss. (Hint: use studentsPtr.)
+\item Write the commands to free memory.
+\end{enumerate}
+
+\end{enumerate}
+
+\vskip.15in
+\noindent\textbf{How to turn in:} \\
+Turn in via GitHub.  Ensure the file(s) are in your directory and then:
+\begin{itemize}
+\item \$ git add $<$files$>$
+\item \$ git commit 
+\item \$ git push
+\end{itemize}
+
+\vskip.15in
+\noindent\textbf{Due Date:}
+September 18, 2019 2359
+
+\vskip.15in
+\noindent\textbf{Teamwork:} No teamwork, your work must be your own.
+
+\end{document}

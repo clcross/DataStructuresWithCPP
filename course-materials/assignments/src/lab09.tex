@@ -1,0 +1,144 @@
+\documentclass[12pt]{article}
+\usepackage{listings}
+\usepackage{color}
+\textwidth=7in
+\textheight=9.5in
+\topmargin=-1in
+\headheight=0in
+\headsep=.5in
+\hoffset  -.85in
+
+\definecolor{mygray}{rgb}{0.4,0.4,0.4}
+\definecolor{mygreen}{rgb}{0,0.8,0.6}
+\definecolor{myorange}{rgb}{1.0,0.4,0}
+
+\lstset{
+basicstyle = \ttfamily,columns=fullflexible,
+commentstyle=\color{mygray},
+frame=single,
+numbers=left,
+numbersep=5pt,
+numberstyle=\tiny\color{mygray},
+keywordstyle=\color{mygreen},
+showspaces=false,
+showstringspaces=false,
+stringstyle=\color{myorange},
+tabsize=2
+}
+
+\pagestyle{empty}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}} 
+\begin{document}
+
+\begin{center}
+{\bf lab 09: Bubble Sort and Binary Search}
+\end{center}
+
+\setlength{\unitlength}{1in}
+
+\begin{picture}(6,.1) 
+\put(0,0) {\line(1,0){6.25}}         
+\end{picture}
+
+\renewcommand{\arraystretch}{2}
+\setlength{\tabcolsep}{6pt} % General space between cols (6pt standard)
+\renewcommand{\arraystretch}{.5} % General space between rows (1 standard)
+
+\vskip.15in
+\noindent\textbf{Part 1:} Extend your implementation from lab07 to include functions for Bubble Sort and Binary Search.
+
+\begin{lstlisting}[language=C++]{Name=test2}
+
+#ifndef ARRAY_H
+#define ARRAY_H
+
+template <class T>
+class Array {
+    private:
+    /* You fill out the private contents. */
+
+    public:
+    /* Do a deep copy of the array into the list.
+     * Note: This one uses a pointer!
+     */
+    Array(const T *array, const int size);
+    /* Do a deep copy of the array into the list
+     * Note: This one uses a reference to a List!
+     */
+    Array(const Array<T> &list);
+
+    /* Return the current length of the array */
+    int getLength() const;
+
+    /* Returns the index in the array where value is found.  
+     * Return -1 if value is not present in the array.
+     */
+    int search(const T &value);
+
+    /* Removes an item at position index by shifting later elements left.
+     * Returns true iff 0 <= index < size.
+     */
+    bool remove(const int index);
+
+    /* Retrieves the element at position pos */
+    T& operator[](const int pos);
+
+    /* Returns if the two lists contain the same elements in the
+     * same order.
+     */
+    bool operator==(Array<T> &list) const;
+
+    /* Runs a bubble sort algorithm on the array.
+     * The array shall be ordered from least to greatest
+     */
+    void bubbleSort();
+
+    /* Searches for an element with value value and returns the index of that
+     * data.
+     * NOTE: We assume the array is sorted!
+     * Return -1 if the value is not found.
+     */
+    int binarySearch(const T &value);
+
+    /* Free any memory used! */
+    ~Array();
+};
+
+/* Since Array is templated, we include the .cpp.
+ * Templated classes are not implemented until utilized (or explicitly declared).
+ */
+#include "array.cpp"
+
+#endif
+\end{lstlisting}
+
+\vskip.15in
+\noindent\textbf{Write some test cases:} \\
+Create some test cases, using cxxtestgen, that you believe would cover all aspects of your code.
+
+\vskip.15in
+\noindent\textbf{Memory Management:} \\
+Now that are using new, we must ensure that there is a corresponding delete to free the memory.  Ensure there are no memory leaks in your code!  Please run Valgrind on your tests to ensure no memory leaks!
+
+\vskip.15in
+\noindent\textbf{STL:} \\
+You may not use anything from the STL.
+
+\vskip.15in
+\noindent\textbf{How to turn in:} \\
+Turn in via GitHub.  Ensure the file(s) are in your directory and then:
+\begin{itemize}
+\item \$ git add $<$files$>$
+\item \$ git commit 
+\item \$ git push
+\end{itemize}
+
+\vskip.15in
+\noindent\textbf{Due Date:}
+October 02, 2019 2359
+
+\vskip.15in
+\noindent\textbf{Teamwork:} No teamwork, your work must be your own.
+
+\end{document}

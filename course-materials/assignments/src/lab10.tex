@@ -1,0 +1,167 @@
+\documentclass[12pt]{article}
+\usepackage{listings}
+\usepackage{color}
+\textwidth=7in
+\textheight=9.5in
+\topmargin=-1in
+\headheight=0in
+\headsep=.5in
+\hoffset  -.85in
+
+\definecolor{mygray}{rgb}{0.4,0.4,0.4}
+\definecolor{mygreen}{rgb}{0,0.8,0.6}
+\definecolor{myorange}{rgb}{1.0,0.4,0}
+
+\lstset{
+basicstyle = \ttfamily,columns=fullflexible,
+commentstyle=\color{mygray},
+frame=single,
+numbers=left,
+numbersep=5pt,
+numberstyle=\tiny\color{mygray},
+keywordstyle=\color{mygreen},
+showspaces=false,
+showstringspaces=false,
+stringstyle=\color{myorange},
+tabsize=2
+}
+
+\pagestyle{empty}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\begin{document}
+
+\begin{center}
+{\bf lab 10: Stacks and Queues}
+\end{center}
+
+\setlength{\unitlength}{1in}
+
+\begin{picture}(6,.1) 
+\put(0,0) {\line(1,0){6.25}}         
+\end{picture}
+
+\renewcommand{\arraystretch}{2}
+\setlength{\tabcolsep}{6pt} % General space between cols (6pt standard)
+\renewcommand{\arraystretch}{.5} % General space between rows (1 standard)
+
+\vskip.15in
+\noindent\textbf{Instructions:} Implement a Stack and a Queue with whatever data structure you desire.  Remember you may use code from a previous lab or STL vector/list (*hint* *hint*).
+
+In class we will implement a stack:
+
+\begin{lstlisting}[language=C++]{Name=test2}
+
+#ifndef STACK_H
+#define STACK_H
+
+template<class T>
+class Stack {
+    private:
+        /* Class to implement.*/
+    public:
+        /* Empty constructor shall create an empty Stack! */
+        Stack();
+        /* Do a deep copy of stack into the this.
+         * Note: This one uses a reference to a Stack!
+         */
+        Stack(const Stack<T> &stack);
+        /* Deconstructor shall free up memory */
+        ~Stack();
+        /* Return the current length (number of items) in the stack */
+        int getLength() const;
+        /* Returns true if the stack is empty. */
+        bool isEmpty() const;
+        /* Print out the Stack */
+        void print() const;
+        /* Pushes the val to the top of the stack. */
+        bool push(const T &val);
+        /* Returns the top element from the stack. */
+        T& top();
+        /* Removes the top element from the stack. */
+        void pop();
+        /* Returns if the two stacks contain the same elements in the
+         * same order.
+         */
+        bool operator==(const Stack<T> &stack) const;
+};
+
+#include "stack.cpp"
+
+#endif
+\end{lstlisting}
+
+In your lab finish the implementation of a Queue:
+
+\begin{lstlisting}[language=C++]{Name=test2}
+
+#ifndef QUEUE_H
+#define QUEUE_H
+
+template<class T>
+class Queue {
+    private:
+        /* Class to implement.*/
+    public:
+        /* Empty constructor shall create an empty Queue! */
+        Queue();
+        /* Do a deep copy of queue into the this.
+         * Note: This one uses a reference to a Queue!
+         */
+        Queue(const Queue<T> &queue);
+        /* Deconstructor shall free up memory */
+        ~Queue();
+        /* Return the current length (number of items) in the queue */
+        int getLength() const;
+        /* Returns true if the queue is empty. */
+        bool isEmpty() const;
+        /* Print out the Queue */
+        void print() const;
+        /* Pushes the val to the end of the queue. */
+        bool push(const T &val);
+        /* returns the first element from the queue. */
+        T& first();
+        /* Removes the first element from the queue. */
+        void pop();
+        /* Returns if the two queues contain the same elements in the
+         * same order.
+         */
+        bool operator==(const Queue<T> &queue) const;
+};
+
+#include "queue.cpp"
+
+#endif
+\end{lstlisting}
+
+\vskip.15in
+\noindent\textbf{STL:} \\
+You may use vector, string, and list from the STL.
+
+\vskip.15in
+\noindent\textbf{Write some test cases:} \\
+Create some test cases, using cxxtestgen, that you believe would cover all aspects of your code.
+
+\vskip.15in
+\noindent\textbf{Memory Management:} \\
+Now that are using new, we must ensure that there is a corresponding delete to free the memory.  Ensure there are no memory leaks in your code!  Please run Valgrind on your tests to ensure no memory leaks!
+\vskip.15in
+
+\vskip.15in
+\noindent\textbf{How to turn in:} \\
+Turn in via GitHub.  Ensure the file(s) are in your directory and then:
+\begin{itemize}
+\item \$ git add $<$files$>$
+\item \$ git commit 
+\item \$ git push
+\end{itemize}
+
+\vskip.15in
+\noindent\textbf{Due Date:}
+October 07, 2019 2359
+
+\vskip.15in
+\noindent\textbf{Teamwork:} No teamwork, your work must be your own.
+
+\end{document}

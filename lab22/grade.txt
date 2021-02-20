@@ -1,0 +1,14 @@
+******************* add-remove Test *********************
+g++ -o gam-test -g -I src/ --std=c++14 src/grapham.cpp src/main.cpp
+Failures = 
+MAKE_ERROR = 
++ 50.000 pts of 50.000
+Total grade so far: 50.000
+******************* shortest path Test *********************
+g++ -o gam-test -g -I src/ --std=c++14 src/grapham.cpp src/main.cpp
+Failures = 
+MAKE_ERROR = 
++ 50.000 pts of 50.000
+Total grade so far: 100.000
+Auto-grader grade: 100.000
+*****************Finished lab22****************

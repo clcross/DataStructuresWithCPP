@@ -1,0 +1,26 @@
+******************* Count Negatives Test *********************
+g++ -o arrays -O2 -I src/ --std=c++14 src/arrays.cpp src/main.cpp
+Failures = 
+MAKE_ERROR = 
++ 25.000 pts of 25.000
+Total grade so far: 25.000
+******************* Find Min Odd Test *********************
+g++ -o arrays -O2 -I src/ --std=c++14 src/arrays.cpp src/main.cpp
+Failures = 
+MAKE_ERROR = 
++ 25.000 pts of 25.000
+Total grade so far: 50.000
+******************* Remove Test *********************
+g++ -o arrays -O2 -I src/ --std=c++14 src/arrays.cpp src/main.cpp
+Failures = 
+MAKE_ERROR = 
++ 25.000 pts of 25.000
+Total grade so far: 75.000
+******************* Search Test *********************
+g++ -o arrays -O2 -I src/ --std=c++14 src/arrays.cpp src/main.cpp
+Failures = 
+MAKE_ERROR = 
++ 25.000 pts of 25.000
+Total grade so far: 100.000
+Auto-grader grade: 100.000
+*****************Finished lab06****************
